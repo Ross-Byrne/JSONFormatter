@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-
+    
     <head>
         <meta charset="UTF-8">
         <title>JSON Converter</title>
@@ -16,12 +16,45 @@
     
   <body>
 
-      <div>
-        <canvas id="canvasOne"></canvas>
+      <h1 align="center">Copy & Paste Your JSON Into The Box Below!</h1>
+      
+      <div Style="padding: 20px;" align="center">
+          <form name="myForm">
+                <textarea type="text" name="jsonEntered" Style="width: 520px; height: 700px;"></textarea>
+          </form>
       </div>
       
+    <div align="center">
+        <button style="padding: 10px;" onclick="convertJSONToMin(document.myForm.jsonEntered.value);">Converter To Minimum</button>
+        <button style="padding: 10px;" onclick="convertJSONToMax(document.myForm.jsonEntered.value);">Converter To Maximum</button>
+    </div>
+    
     <script type="text/javascript">
 		 
+        // function to convert entered json to minimum
+        function convertJSONToMin(json){
+         
+            var convertedJSON = " ";
+            
+            // just to test
+            convertedJSON = json + " WAS CONVERTED!";
+            
+            document.myForm.jsonEntered.value = convertedJSON;
+            
+        } // convertJSONToMin()
+        
+        
+        // function to convert entered json to maximum
+        function convertJSONToMax(json){
+         
+            var convertedJSON = " ";
+            
+            // just to test
+            convertedJSON = json + " WAS CONVERTED!";
+            
+            document.myForm.jsonEntered.value = convertedJSON;
+            
+        } // convertJSONToMin()
 	
     </script>
 
