@@ -45,6 +45,9 @@
             // remove all newline characters from string
             formattedJSON = formattedJSON.replace(/(\r\n|\n|\r)/g, '');
             
+            // remove all tab characters from string
+            formattedJSON = formattedJSON.replace(/\t/g, '');
+            
             // update textarea with formatted JSON
             document.myForm.jsonEntered.value = formattedJSON;
             
@@ -54,15 +57,85 @@
             
         // function to format entered json to regular
         function formatJSONToReg(json){
-         
-            var formattedJSON = " ";
             
-            // just to test
-            formattedJSON = json + " WAS FORMATTED!";
+            // save copy of entered JSON to formattedJSON var
+            formattedJSON = json;
             
+            var len = formattedJSON.length;
+            var tabCount = 0;
+            
+            // loop through string
+            for(var i = 0; i < formattedJSON.length; i++){
+                
+                
+              /*  if(formattedJSON.charAt(i+1) == ','){
+                    
+                    // add a newline to ','
+                    var formattedChar = ",\n";
+                   
+                    // add enough spaces to compensate for tabs
+                    for(var x = 0; x < tabCount; x++){
+                        
+                        formattedChar += "    ";
+                    } // for
+                    
+                   // add ',' back into string will added tabs and newline 
+                   formattedJSON = setCharAt(formattedJSON, i+1, formattedChar); 
+                    
+                }*/
+                
+                if(formattedJSON.charAt(i) == ',' && formattedJSON.charAt(i+1) == '{'){
+                    
+                    // add a newline to ','
+                    var formattedChar = "{\n";
+                   
+                    // add enough spaces to compensate for tabs
+                    for(var x = 0; x < tabCount; x++){
+                        
+                        formattedChar += "    ";
+                    } // for
+                    
+                   // add ',' back into string will added tabs and newline 
+                   formattedJSON = setCharAt(formattedJSON, i+1, formattedChar); 
+                    
+                } else if(formattedJSON.charAt(i) == '{'){
+                    
+                    // add a newline to {
+                    var formattedChar = "{\n";
+                
+                    // add a tab
+                    tabCount++;
+                   
+                    // add enough spaces to compensate for tabs
+                    for(var x = 0; x < tabCount; x++){
+                        
+                        formattedChar += "    ";
+                    } // for
+                    
+                   // add { back into string will added tabs and newline 
+                   formattedJSON = setCharAt(formattedJSON, i, formattedChar);
+                    
+                } // if
+                
+            } // for
+            
+            
+            // update textarea with formatted JSON
             document.myForm.jsonEntered.value = formattedJSON;
             
         } // formatJSONToReg()
+            
+        /*================================ setCharAt() ================================*/
+            
+        function setCharAt(str1, index, str2) {
+            
+            // if index is greater then length, return str unchanged
+            if(index > str1.length-1) return str1;
+            
+            // otherwise return string with added string
+            return str1.substr(0,index) + str2 + str1.substr(index+1);
+            
+        } // setCharAt()
 	
         </script>
         
