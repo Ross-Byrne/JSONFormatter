@@ -22,34 +22,51 @@
             <button style="padding: 10px;" onclick="formatJSONToMin(document.myForm.jsonEntered.value);">Format To Minimum</button>
             <button style="padding: 10px;" onclick="formatJSONToReg(document.myForm.jsonEntered.value);">Format To Regular</button>
         </div>
+        
+        
+        <!--/////////////////////////////// JavaScript ///////////////////////////////-->
+        
     
         <script type="text/javascript">
 		 
+        /*================================ Functions ================================*/
+        
+        /*================================ formatJSONToMin() ================================*/
+            
         // function to format entered json to minimum
         function formatJSONToMin(json){
-         
-            var convertedJSON = " ";
             
-            // just to test
-            convertedJSON = json + " WAS CONVERTED!";
+            // save copy of entered JSON to formattedJSON var
+            formattedJSON = json;
             
-            document.myForm.jsonEntered.value = convertedJSON;
+            // remove all space characters from the string
+            formattedJSON = formattedJSON.replace(/ /g, '');
+            
+            // remove all newline characters from string
+            formattedJSON = formattedJSON.replace(/(\r\n|\n|\r)/g, '');
+            
+            // update textarea with formatted JSON
+            document.myForm.jsonEntered.value = formattedJSON;
             
         } // formatJSONToMin()
         
+        /*================================ formatJSONToReg() ================================*/
+            
         // function to format entered json to regular
         function formatJSONToReg(json){
          
-            var convertedJSON = " ";
+            var formattedJSON = " ";
             
             // just to test
-            convertedJSON = json + " WAS CONVERTED!";
+            formattedJSON = json + " WAS FORMATTED!";
             
-            document.myForm.jsonEntered.value = convertedJSON;
+            document.myForm.jsonEntered.value = formattedJSON;
             
         } // formatJSONToReg()
 	
         </script>
+        
+        <!--/////////////////////////////// JavaScript End ///////////////////////////////-->
 
     </body>
 
