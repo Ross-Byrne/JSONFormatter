@@ -4,35 +4,29 @@
     
     <head>
         <meta charset="UTF-8">
-        <title>JSON Converter</title>
+        <title>JSON Formatter</title>
 
-        <style type="text/css">
-            body {
-                background-color: white;
-            }
-        </style>
-
-  </head>
+    </head>
     
-  <body>
+    <body>
 
-      <h1 align="center">Copy & Paste Your JSON Into The Box Below!</h1>
+        <h1 align="center">Copy & Paste Your JSON Into The Box Below!</h1>
       
-      <div Style="padding: 20px;" align="center">
-          <form name="myForm">
+        <div Style="padding: 20px;" align="center">
+            <form name="myForm">
                 <textarea type="text" name="jsonEntered" Style="width: 520px; height: 700px;"></textarea>
-          </form>
-      </div>
+            </form>
+        </div>
       
-    <div align="center">
-        <button style="padding: 10px;" onclick="convertJSONToMin(document.myForm.jsonEntered.value);">Converter To Minimum</button>
-        <button style="padding: 10px;" onclick="convertJSONToMax(document.myForm.jsonEntered.value);">Converter To Maximum</button>
-    </div>
+        <div align="center">
+            <button style="padding: 10px;" onclick="formatJSONToMin(document.myForm.jsonEntered.value);">Format To Minimum</button>
+            <button style="padding: 10px;" onclick="formatJSONToReg(document.myForm.jsonEntered.value);">Format To Regular</button>
+        </div>
     
-    <script type="text/javascript">
+        <script type="text/javascript">
 		 
-        // function to convert entered json to minimum
-        function convertJSONToMin(json){
+        // function to format entered json to minimum
+        function formatJSONToMin(json){
          
             var convertedJSON = " ";
             
@@ -41,11 +35,10 @@
             
             document.myForm.jsonEntered.value = convertedJSON;
             
-        } // convertJSONToMin()
+        } // formatJSONToMin()
         
-        
-        // function to convert entered json to maximum
-        function convertJSONToMax(json){
+        // function to format entered json to regular
+        function formatJSONToReg(json){
          
             var convertedJSON = " ";
             
@@ -54,10 +47,10 @@
             
             document.myForm.jsonEntered.value = convertedJSON;
             
-        } // convertJSONToMin()
+        } // formatJSONToReg()
 	
-    </script>
+        </script>
 
-  </body>
+    </body>
 
 </html>
