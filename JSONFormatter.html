@@ -67,8 +67,27 @@
             // loop through string
             for(var i = 0; i < formattedJSON.length; i++){
                 
+                if(formattedJSON.charAt(i) == '}'){
+						 
+							 // add a newline to {
+                    var formattedChar = "\n}";
                 
-                if(formattedJSON.charAt(i) == ',' && formattedJSON.charAt(i+1) == '{'){
+                    // remove a tab
+                    tabCount--;
+                   
+                    // add enough spaces to compensate for tabs
+                    for(var x = 0; x < tabCount; x++){
+                        
+                        formattedChar += "    ";
+                    } // for
+                    
+                   // add { back into string will added tabs and newline 
+                   formattedJSON = setCharAt(formattedJSON, i, formattedChar);
+						 
+					 } // if
+					
+					
+            /*    if(formattedJSON.charAt(i) == ',' && formattedJSON.charAt(i+1) == '{'){
                     
                     // add a newline to ','
                     var formattedChar = "\n";
@@ -119,13 +138,7 @@
                    // add { back into string will added tabs and newline 
                    formattedJSON = setCharAt(formattedJSON, i, formattedChar);
                     
-                } 
-						 
-					//	 if(formattedJSON.charAt(i) =! ',' && formattedJSON.charAt(i+1) == '}'){
-						 
-						// alert("Yes");
-						 
-					// } // if
+                }*/
 						 
 						 
                 
@@ -141,7 +154,7 @@
             
         function setCharAt(str1, index, str2) {
             
-            // if index is greater then length, return str unchanged
+            // if index is greater then length, return str unchanged 
             if(index > str1.length-1) return str1;
             
             // otherwise return string with added string
