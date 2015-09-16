@@ -68,7 +68,23 @@
             for(var i = 0; i < formattedJSON.length; i++){
                 
                 
-              /*  if(formattedJSON.charAt(i+1) == ','){
+                if(formattedJSON.charAt(i) == ',' && formattedJSON.charAt(i+1) == '{'){
+                    
+                    // add a newline to ','
+                    var formattedChar = "\n";
+                   
+                    // add enough spaces to compensate for tabs
+                    for(var x = 0; x < tabCount; x++){
+                        
+                        formattedChar += "    ";
+                    } // for
+                    
+						 formattedChar = "{";
+						 
+                   // add ',' back into string will added tabs and newline 
+                   formattedJSON = setCharAt(formattedJSON, i+1, formattedChar); 
+                    
+                } else if(formattedJSON.charAt(i) == ','){
                     
                     // add a newline to ','
                     var formattedChar = ",\n";
@@ -80,25 +96,13 @@
                     } // for
                     
                    // add ',' back into string will added tabs and newline 
-                   formattedJSON = setCharAt(formattedJSON, i+1, formattedChar); 
+                   formattedJSON = setCharAt(formattedJSON, i, formattedChar); 
                     
-                }*/
-                
-                if(formattedJSON.charAt(i) == ',' && formattedJSON.charAt(i+1) == '{'){
-                    
-                    // add a newline to ','
-                    var formattedChar = "{\n";
-                   
-                    // add enough spaces to compensate for tabs
-                    for(var x = 0; x < tabCount; x++){
-                        
-                        formattedChar += "    ";
-                    } // for
-                    
-                   // add ',' back into string will added tabs and newline 
-                   formattedJSON = setCharAt(formattedJSON, i+1, formattedChar); 
-                    
-                } else if(formattedJSON.charAt(i) == '{'){
+                } else if(formattedJSON.charAt(i) == '{' && formattedJSON.charAt(i-1) == ','){
+						 
+						 // Do Nothing
+						 
+					 } else if(formattedJSON.charAt(i) == '{'){
                     
                     // add a newline to {
                     var formattedChar = "{\n";
@@ -115,7 +119,15 @@
                    // add { back into string will added tabs and newline 
                    formattedJSON = setCharAt(formattedJSON, i, formattedChar);
                     
-                } // if
+                } 
+						 
+					//	 if(formattedJSON.charAt(i) =! ',' && formattedJSON.charAt(i+1) == '}'){
+						 
+						// alert("Yes");
+						 
+					// } // if
+						 
+						 
                 
             } // for
             
